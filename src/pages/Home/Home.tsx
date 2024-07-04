@@ -27,10 +27,15 @@ const Home = () => {
             {t("browseButton")}
           </Link>
           {/* Посилання на GitHub з іконкою */}
-          <Link to="/" className={styles.github}>
+          <a
+            href="https://github.com/chalamett/re-doggos/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.github}
+          >
             GitHub
             <FontAwesomeIcon icon={faChevronCircleRight} />
-          </Link>
+          </a>
         </div>
       </div>
     </div>
