@@ -1,0 +1,44 @@
+@use "assets/styles/_main" as *;
+
+.dogStat {
+  margin: 0.5rem 0;
+
+  @include text-base;
+
+  @include for-tablet-only {
+    @include text-lg;
+  }
+}
+
+.statName {
+  font-weight: 600;
+}
+
+.statsContainer {
+  display: flex;
+  flex-direction: row;
+  height: 1.75rem;
+  margin: 0.5rem 0;
+}
+
+.stat {
+  width: 20%;
+  border: 0 solid var(--bg-dimmed);
+  border-right-width: 3px;
+
+  &:first-child {
+    border-radius: 999px 0 0 999px;
+  }
+
+  &:last-child {
+    border-radius: 0 999px 999px 0;
+  }
+}
+
+.filled {
+  background-color: var(--primary-dark);
+}
+
+.empty {
+  background: $concrete-gray;
+}

@@ -1,0 +1,127 @@
+// Імпортуємо основні стилі з файлу _main.scss
+@use "assets/styles/_main.scss" as *;
+
+// Основний блок стилів для сторінки "About"
+.about {
+  padding: 2.5rem; // Встановлюємо внутрішні відступи
+  width: 100vw; // Ширина на весь екран
+  min-height: calc(100vh - 2.5rem); // Мінімальна висота, враховуючи відступ зверху
+  background-color: var(--bg-page); // Колір фону сторінки
+  color: var(--black); // Колір тексту
+  font-family: $open-sans; // Використовуємо шрифт Open Sans
+  cursor: default; // Курсор за замовчуванням
+  transition: 300ms ease-in-out; // Плавний перехід при зміні стилів
+
+  @include for-tablet-only {
+    padding: 4rem 0; // Відступи для планшетів
+  }
+
+  @include for-desktop-up {
+    display: flex; // Використовуємо flexbox для вирівнювання
+    align-items: center; // Вирівнюємо елементи по вертикалі
+    flex-direction: column; // Встановлюємо напрямок елементів по вертикалі
+    min-height: calc(100vh - 3rem); // Мінімальна висота для десктопів
+  }
+
+  @include for-extra-large-screen {
+    padding: 6rem 0; // Додаткові відступи для великих екранів
+    min-height: calc(100vh - 3.5rem); // Мінімальна висота для великих екранів
+  }
+}
+
+// Стиль заголовку на сторінці "About"
+.aboutHeader {
+  text-align: center; // Вирівнюємо текст по центру
+
+  @include text-2xl; // Використовуємо міксин для великого тексту
+
+  @include for-tablet-only {
+    margin: 0 6rem; // Відступи з боків для планшетів
+    @include text-4xl; // Збільшуємо розмір тексту для планшетів
+  }
+}
+
+// Стиль для імені автора
+.name {
+  text-decoration: underline var(--bg-page); // Підкреслюємо текст кольором фону сторінки
+  cursor: pointer; // Курсор у вигляді руки при наведенні
+
+  @include hoverable {
+    &:hover {
+      text-decoration-color: var(--black); // Зміна кольору підкреслення при наведенні
+      transition: text-decoration-color 200ms ease-in-out; // Плавний перехід кольору підкреслення
+    }
+  }
+}
+
+// Стиль основного контенту сторінки
+.content {
+  display: flex; // Використовуємо flexbox для вирівнювання
+  align-items: center; // Вирівнюємо елементи по вертикалі
+  flex-direction: column; // Встановлюємо напрямок елементів по вертикалі
+
+  @include for-desktop-up {
+    width: 50%; // Ширина контенту для десктопів
+  }
+
+  svg {
+    margin-left: 0.5rem; // Відступ зліва для SVG іконок
+  }
+}
+
+// Стиль для посилання на GitHub
+.github {
+  margin: 1rem 0; // Відступи зверху та знизу
+
+  @include text-xl; // Використовуємо міксин для великого тексту
+  @include about-links-transition; // Використовуємо міксин для плавних переходів
+
+  @include for-tablet-only {
+    margin-top: 2rem; // Відступ зверху для планшетів
+    @include text-2xl; // Збільшуємо розмір тексту для планшетів
+  }
+}
+
+// Стиль для колонок
+.column {
+  display: flex; // Використовуємо flexbox для вирівнювання
+  flex-direction: column; // Встановлюємо напрямок елементів по вертикалі
+  align-items: center; // Вирівнюємо елементи по центру
+}
+
+// Стиль для підзаголовків
+.subheader {
+  margin-top: 0.5rem; // Відступ зверху
+
+  @include text-2xl; // Використовуємо міксин для великого тексту
+
+  @include for-tablet-only {
+    @include text-3xl; // Збільшуємо розмір тексту для планшетів
+  }
+}
+
+// Стиль для списків
+.list {
+  list-style-type: disc !important; // Використовуємо маркери у вигляді дисків
+  list-style-position: inside; // Маркери всередині списку
+
+  @include text-xl; // Використовуємо міксин для великого тексту
+
+  @include for-tablet-only {
+    @include text-2xl; // Збільшуємо розмір тексту для планшетів
+  }
+}
+
+// Стиль для елементів списку
+.listItem {
+  margin: 0.75rem 0; // Відступи зверху та знизу
+
+  @include for-desktop-up {
+    margin: 1.25rem 0; // Збільшені відступи для десктопів
+  }
+}
+
+// Стиль для посилань у списку
+.listLink {
+  @include about-links-transition; // Використовуємо міксин для плавних переходів
+}

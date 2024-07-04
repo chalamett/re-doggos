@@ -1,0 +1,101 @@
+@use "assets/styles/_main.scss" as *;
+
+.modeToggler {
+  width: 1.5rem;
+
+  @include for-desktop-up {
+    width: 4rem;
+  }
+
+  @include for-extra-large-screen {
+    width: 4.5rem;
+  }
+}
+
+.checkbox {
+  position: absolute;
+  display: none;
+
+  &:checked+.label .ball {
+    transform: translateX(32px);
+
+    @include for-extra-large-screen {
+      transform: translateX(36px);
+    }
+  }
+}
+
+.label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1.5rem;
+  background: $mode-toggler-bg;
+  border-radius: 999px;
+  cursor: pointer;
+
+  @include for-desktop-up {
+    justify-content: space-between;
+    height: 2rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  @include for-extra-large-screen {
+    height: 2.25rem;
+  }
+}
+
+.faMoon {
+  position: absolute;
+  margin-left: 0.125rem;
+  padding-right: 3px;
+  color: transparent;
+  transition: 300ms ease-in-out;
+
+  @include for-desktop-up {
+    position: relative;
+    margin-left: 0.25rem;
+    padding-right: 0;
+    color: $moon;
+  }
+
+  @include for-extra-large-screen {
+    margin-left: 0.375rem;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+
+.faSun {
+  color: $sun;
+  transition: 300ms ease-in-out;
+
+  @include for-desktop-up {
+    margin-right: 0.375rem;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  @include for-extra-large-screen {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+.ball {
+  position: absolute;
+  margin-left: 0.125rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  background: var(--ball);
+  border-radius: 999px;
+  transition: 300ms ease-in-out;
+
+  @include lg-block;
+
+  @include for-extra-large-screen {
+    width: 2rem;
+    height: 2rem;
+  }
+}

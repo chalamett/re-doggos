@@ -1,0 +1,78 @@
+// Використовуємо загальні стилі з файлу _main.scss
+@use "assets/styles/_main.scss" as *;
+
+// Стилі для контейнера анімації завантаження
+.loaderWrapper {
+  display: flex;
+  align-items: center; // Вирівнювання по вертикалі
+  justify-content: center; // Вирівнювання по горизонталі
+  background-color: var(--bg-page); // Фоновий колір
+  width: 100%;
+  height: 100%;
+}
+
+// Стилі для анімації завантаження
+.loader {
+  width: 12rem;
+  height: 12rem;
+  box-sizing: border-box;
+  border-top: 0.3em solid hotpink; // Верхній бордер для створення ефекту обертання
+  border-radius: 50%;
+  position: relative;
+  animation: rotating 2s ease-in-out infinite; // Анімація обертання
+  --direction: 1;
+
+  // Стилі для тексту в середині анімації
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    box-sizing: border-box;
+    top: -0.2em;
+  }
+
+  &::before {
+    border-top: 0.3em solid dodgerblue;
+    transform: rotate(120deg); // Обертання на 120 градусів
+  }
+
+  &::after {
+    border-top: 0.3em solid gold;
+    transform: rotate(240deg); // Обертання на 240 градусів
+  }
+
+  // Стилі для тексту всередині кола
+  span {
+    position: absolute;
+    color: var(--black);
+    width: inherit;
+    height: inherit;
+    text-align: center;
+    line-height: 10em; // Вирівнювання тексту по центру
+    font-family: sans-serif;
+    animation: rotating 2s linear infinite; // Анімація обертання тексту
+    --direction: -1;
+  }
+
+  // Адаптивні стилі для планшетів
+  @include for-tablet-only {
+    width: 15rem;
+    height: 15rem;
+
+    @include text-2xl;
+  }
+}
+
+// Ключові кадри для анімації обертання
+@keyframes rotating {
+  50% {
+    transform: rotate(calc(180deg * var(--direction))); // Обертання на 180 градусів
+  }
+
+  100% {
+    transform: rotate(calc(360deg * var(--direction))); // Обертання на 360 градусів
+  }
+}

@@ -1,0 +1,190 @@
+// Загальні стилі для головної сторінки
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 2rem;
+
+  width: 100vw;
+
+  font-family: $open-sans;
+  color: $white;
+  background-image: url("../../assets/images/background.jpg");
+  background-position: 33% 50%;
+  background-size: cover;
+  cursor: default;
+
+  @include screen(height);
+
+  @include for-tablet-only {
+    // Адаптивні стилі для планшетів
+    align-items: flex-end;
+    padding-right: 5rem;
+  }
+
+  @include for-extra-large-screen {
+    // Адаптивні стилі для дуже великих екранів
+    padding-right: 15rem;
+  }
+}
+
+// Стилі для контейнера з контентом на головній сторінці
+.homeContent {
+  width: 100%;
+  background-color: var(--home-main-text);
+  border-radius: 2rem;
+  padding: 1.5rem 1.5em 1rem;
+  transition: 300ms ease-in-out;
+
+  @include for-tablet-only {
+    // Адаптивні стилі для планшетів
+    width: 80%;
+  }
+
+  @include for-desktop-up {
+    // Адаптивні стилі для десктопів
+    width: 50%;
+  }
+
+  @include for-large-screen {
+    // Адаптивні стилі для великих екранів
+    width: 45%;
+  }
+
+  @include for-extra-large-screen {
+    // Адаптивні стилі для дуже великих екранів
+    padding: 2.5rem 2.5em 2rem;
+    width: 35%;
+  }
+}
+
+// Стилі для заголовка галереї собак
+.dogsGallery {
+  font-weight: 700;
+
+  @include text-3xl;
+
+  @include for-tablet-only {
+    // Адаптивні стилі для планшетів
+    @include text-5xl;
+  }
+
+  @include for-desktop-up {
+    // Адаптивні стилі для десктопів
+    @include text-4xl;
+  }
+
+  @include for-large-screen {
+    // Адаптивні стилі для великих екранів
+    @include text-5xl;
+  }
+
+  @include for-extra-large-screen {
+    // Адаптивні стилі для дуже великих екранів
+    @include text-6xl;
+  }
+}
+
+// Стилі для основного тексту на головній сторінці
+.homeMain {
+  margin: 1rem 0;
+
+  @include text-lg;
+
+  @include for-tablet-only {
+    // Адаптивні стилі для планшетів
+    margin: 1.5rem 0;
+    font-weight: 500;
+
+    @include text-2xl;
+  }
+
+  @include for-desktop-up {
+    // Адаптивні стилі для десктопів
+    margin: 2rem 0;
+
+    @include text-lg;
+  }
+
+  @include for-large-screen {
+    // Адаптивні стилі для великих екранів
+    @include text-xl;
+  }
+
+  @include for-extra-large-screen {
+    // Адаптивні стилі для дуже великих екранів
+    @include text-3xl;
+  }
+}
+
+// Стилі для контейнера з кнопками
+.buttons {
+  gap: 1rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  font-weight: 600;
+
+  @include text-base; // Розмір тексту для всіх пристроїв
+
+  @include for-tablet-only {
+    // Адаптивні стилі для планшетів
+    @include text-2xl;
+  }
+
+  @include for-desktop-up {
+    // Адаптивні стилі для десктопів
+    @include text-lg;
+  }
+
+  @include for-extra-large-screen {
+    // Адаптивні стилі для дуже великих екранів
+    @include text-3xl;
+  }
+
+  svg {
+    margin-left: 0.5rem;
+  }
+}
+
+// Стилі для кнопки перегляду порід
+.browseBreeds {
+  padding: 0.375rem 0.75rem;
+  background-color: var(--browse-btn);
+  text-transform: lowercase;
+  text-align: center;
+  border-radius: 0.5rem;
+  transition: 300ms ease-in-out;
+
+  @include for-extra-large-screen {
+    // Адаптивні стилі для дуже великих екранів
+    padding: 0.5rem 1.25rem;
+  }
+
+  @include hoverable {
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+// Стилі для посилання на GitHub
+.github {
+  flex-shrink: 0;
+  filter: drop-shadow(1.5px 1.5px 1px rgba(0, 0, 0, 0.5));
+  transition: 150ms ease-in-out;
+
+  @include hoverable {
+    &:hover {
+      color: var(--github-btn);
+      filter: drop-shadow(1.5px 1.5px 1px rgba(15, 3, 107, 0.5)); // Зміна тіні при наведенні
+    }
+  }
+
+  @include for-tablet-only {
+    // Адаптивні стилі для планшетів
+    order: -9999;
+  }
+}

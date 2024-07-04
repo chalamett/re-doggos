@@ -1,0 +1,53 @@
+@use "assets/styles/_main.scss" as *;
+
+// Стилі для компонента ZeroMatches
+.zeroMatches {
+  margin-top: 2.5rem;
+  width: 80%;
+  text-align: center;
+  color: var(--dog-breeds-bars);
+  cursor: default;
+  transition: 300ms ease-in-out;
+
+  // Використовуємо міксини для тексту
+  @include text-5xl;
+
+  @include for-desktop-up {
+    @include text-6xl;
+  }
+
+  @include for-extra-large-screen {
+    @include text-7xl;
+  }
+
+  &span {
+    white-space: nowrap;
+  }
+}
+
+// Стилі для підтексту
+.subText {
+  margin-top: 2.5rem;
+  @include text-4xl;
+
+  @include for-desktop-up {
+    margin-top: 4rem;
+    @include text-5xl;
+  }
+
+  @include for-extra-large-screen {
+    @include text-6xl;
+  }
+}
+
+// Стилі для кнопки скидання фільтрів
+.resetFilters {
+  color: var(--zero-matches-btn);
+  text-decoration-line: underline;
+  text-transform: lowercase;
+  transition: 200ms ease-in-out;
+
+  &:hover {
+    color: var(--zero-matches-btn-hovered);
+  }
+}

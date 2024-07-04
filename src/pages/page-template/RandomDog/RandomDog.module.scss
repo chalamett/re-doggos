@@ -1,0 +1,11 @@
+@use "assets/styles/_main" as *;
+
+.randomDog {
+  @include for-desktop-up {
+    text-transform: uppercase;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}

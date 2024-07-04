@@ -1,0 +1,131 @@
+@use "assets/styles/_main.scss" as *;
+
+.header {
+  position: sticky;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  height: 2.5rem;
+  background-color: var(--header-bg);
+  font-family: $open-sans;
+  color: var(--black);
+  transition: 300ms ease-in-out;
+
+  @include text-base;
+
+  @include for-tablet-only {
+    padding: 0 3.5rem;
+  }
+
+  @include for-desktop-up {
+    gap: 1rem;
+    padding: 0 4rem;
+    height: 3rem;
+  }
+
+  @include for-large-screen {
+    padding: 0 10rem;
+  }
+
+  @include for-extra-large-screen {
+    gap: 1.5rem;
+    padding: 0 16rem;
+    height: 3.5rem;
+
+    @include text-xl;
+  }
+}
+
+.mobileMenuToggle {
+  width: 15px;
+  color: $white;
+
+  @include lg-hidden;
+  @include text-xl;
+
+  @include for-tablet-only {
+    width: 20px;
+  }
+}
+
+.mobileSearchToggle {
+  padding: 0.25rem;
+  color: $white;
+  border-radius: 50%;
+  background-color: rgba($white, 0.4);
+
+  @include lg-hidden;
+  @include text-sm;
+}
+
+.reDoggos {
+  font-family: $graduate;
+  color: $white;
+  cursor: pointer;
+  transition: 200ms ease-in-out;
+
+  @include text-xl;
+
+  @include hoverable {
+    &:hover {
+      color: var(--logo-hovered);
+    }
+  }
+
+  @include for-desktop-up {
+    order: -9999;
+  }
+
+  @include for-extra-large-screen {
+    @include text-2xl;
+  }
+
+  svg {
+    display: none;
+    margin-right: 0.5rem;
+
+    @include for-tablet-only {
+      display: inline-block;
+    }
+  }
+}
+
+.searchBarWrapper {
+  @include lg-block;
+}
+
+.page {
+  text-transform: uppercase;
+
+  @include lg-block;
+
+  @include hoverable {
+    &:hover {
+      color: var(--language);
+      transition: 200ms ease-in-out;
+    }
+  }
+
+  &.about {
+    margin-left: auto;
+  }
+
+  &.underline {
+    text-decoration-line: underline;
+    text-underline-offset: 16.5px;
+
+    @include for-extra-large-screen {
+      text-underline-offset: 18px;
+    }
+  }
+}
+
+.language {
+  color: var(--language);
+  cursor: pointer;
+  transition: 300ms ease-in-out;
+}

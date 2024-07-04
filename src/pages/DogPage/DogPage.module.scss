@@ -1,0 +1,264 @@
+@use "assets/styles/_main.scss" as *;
+// Загальний стиль для сторінки породи собак
+.dogPage {
+  display: flex; // Встановлюємо елементи в flex-контейнер
+  justify-content: center; // Центруємо елементи по горизонталі
+  flex-wrap: wrap; // Дозволяємо елементам переноситись на новий рядок
+  row-gap: 1rem; // Відстань між рядами
+  padding: 1.5rem; // Внутрішні відступи
+  font-family: $open-sans; // Шрифт
+  color: var(--black); // Колір тексту
+  background-color: var(--bg-page); // Колір фону
+  transition: 300ms ease-in-out; // Плавний перехід для анімацій
+
+  @include text-base; // Базовий текстовий стиль
+
+  @include for-tablet-only {
+    padding: 2rem 2.5rem; // Змінюємо відступи для планшетів
+  }
+
+  @include for-desktop-up {
+    row-gap: 1.5rem; // Збільшуємо відстань між рядами для десктопів
+    padding: 1.5rem 4rem; // Змінюємо відступи для десктопів
+  }
+
+  @include for-large-screen {
+    row-gap: 2rem; // Збільшуємо відстань між рядами для великих екранів
+    padding: 1.5rem 9rem; // Змінюємо відступи для великих екранів
+  }
+
+  @include for-extra-large-screen {
+    padding: 1.5rem 15rem; // Змінюємо відступи для дуже великих екранів
+  }
+}
+
+// Стиль для лівої частини заголовку
+.subheaderLeft {
+  display: flex;
+  flex-direction: column; // Вертикальне розташування елементів
+  width: 100%; // Ширина 100%
+
+  @include for-desktop-up {
+    width: 33.33%; // Змінюємо ширину для десктопів
+  }
+}
+
+// Стиль для зображення
+.headImg {
+  height: 30vh; // Висота 30% від висоти вікна
+  border-radius: 0.5rem; // Закруглені кути
+  background-size: cover; // Зображення покриває весь елемент
+  background-position: top; // Позиціонування зображення зверху
+
+  @include for-tablet-only {
+    height: 35vh; // Змінюємо висоту для планшетів
+  }
+}
+
+// Стиль для опису під заголовком
+.subDesc {
+  margin-top: 0.25rem; // Відступ зверху
+  text-align: center; // Центрування тексту
+  font-family: $roboto; // Шрифт
+  color: var(--sub-desc); // Колір тексту
+}
+
+// Стиль для правої частини заголовку
+.subheaderRight {
+  display: flex;
+  justify-content: flex-start; // Вирівнювання по початку
+  flex-wrap: wrap; // Дозволяємо переносити елементи на новий рядок
+  border-radius: 0.75rem; // Закруглені кути
+
+  @include for-desktop-up {
+    margin-left: 1.25rem; // Відступ зліва для десктопів
+    padding: 1.25rem; // Внутрішні відступи
+    width: 64%; // Ширина 64%
+    background-color: var(--desc-bg); // Колір фону
+  }
+
+  @include for-large-screen {
+    padding: 1.25rem 2rem; // Змінюємо відступи для великих екранів
+  }
+}
+
+// Стиль для імені породи
+.name {
+  margin-bottom: 0.75rem; // Відступ знизу
+  color: var(--dog-page-name); // Колір тексту
+  font-family: $caveat; // Шрифт
+  text-transform: uppercase; // Всі букви великі
+  border-radius: 3rem; // Закруглені кути
+  filter: drop-shadow(2px 2px 3px var(--name-shadow)); // Тінь
+
+  @include text-6xl; // Стиль тексту 6xl
+
+  @include for-tablet-only {
+    margin-bottom: 1rem; // Змінюємо відступ знизу для планшетів
+    @include text-7xl; // Стиль тексту 7xl
+  }
+
+  @include for-extra-large-screen {
+    @include text-8xl; // Стиль тексту 8xl
+  }
+}
+
+// Стиль для опису породи
+.desc {
+  font-family: $ibm; // Шрифт
+}
+
+// Стиль для секцій
+.section {
+  width: 100%; // Ширина 100%
+}
+
+// Стиль для назв секцій
+.sectionName {
+  @include text-lg; // Стиль тексту lg
+
+  @include for-desktop-up {
+    @include text-xl; // Стиль тексту xl
+  }
+}
+
+// Стиль для контенту секцій
+.sectionContent {
+  margin: 0.5rem 0; // Відступи зверху та знизу
+  font-family: $ibm; // Шрифт
+
+  @include for-large-screen {
+    margin: 0.75rem 0; // Змінюємо відступи для великих екранів
+  }
+}
+
+// Стиль для обгортки статистики
+.statsWrapper {
+  display: grid; // Встановлюємо елементи в сітку
+  align-items: flex-end; // Вирівнювання по кінцю
+
+  @include for-tablet-only {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); // Сітка з 2 колонок для планшетів
+    column-gap: 4rem; // Відстань між колонками
+  }
+
+  @include for-desktop-up {
+    grid-template-columns: repeat(3, minmax(0, 1fr)); // Сітка з 3 колонок для десктопів
+  }
+
+  @include for-large-screen {
+    column-gap: 8rem; // Змінюємо відстань між колонками для великих екранів
+  }
+
+  @include for-extra-large-screen {
+    grid-template-columns: repeat(4, minmax(0, 1fr)); // Сітка з 4 колонок для дуже великих екранів
+  }
+}
+
+// Стиль для змісту сторінки
+.tableOfContents {
+  display: flex; // Встановлюємо елементи в flex-контейнер
+  justify-content: center; // Центруємо елементи по горизонталі
+  align-items: center; // Центруємо елементи по вертикалі
+  flex-wrap: wrap; // Дозволяємо елементам переноситись на новий рядок
+  width: 100%; // Ширина 100%
+
+  @include text-lg; // Стиль тексту lg
+
+  @include for-large-screen {
+    margin-top: 0.75rem; // Відступ зверху для великих екранів
+
+    @include text-xl; // Стиль тексту xl
+  }
+}
+
+// Стиль для верхньої лінії змісту
+.lineOne {
+  margin-bottom: 1rem; // Відступ знизу
+  width: 25%; // Ширина 25%
+  height: 1px; // Висота 1px
+  background-color: var(--black); // Колір фону
+
+  @include lg-hidden; // Приховуємо для великих екранів
+}
+
+// Стиль для нижньої лінії змісту
+.lineTwo {
+  margin-top: 1rem; // Відступ зверху
+  width: 33%; // Ширина 33%
+  height: 1px; // Висота 1px
+  background-color: var(--black); // Колір фону
+
+  @include lg-hidden; // Приховуємо для великих екранів
+}
+
+// Стиль для нової лінії
+.newLine {
+  flex-basis: 100%; // Основна ширина 100%
+
+  @include for-desktop-up {
+    flex-basis: 0; // Основна ширина 0 для десктопів
+  }
+}
+
+// Стиль для якоря
+.anchor {
+  margin: 0 1rem; // Відступи зліва та справа
+  cursor: pointer; // Змінюємо курсор на вказівник
+  transition: 200ms ease-in-out; // Плавний перехід для анімацій
+
+  @include hoverable {
+    &:hover {
+      color: var(--anchor); // Змінюємо колір при наведенні
+    }
+  }
+}
+
+// Стиль для крапок
+.dot {
+  font-weight: bold; // Жирний шрифт
+}
+
+// Стиль для галереї
+.gallery {
+  display: grid;
+  margin: 0.5rem 0;
+  gap: 0.5rem;
+
+  @include for-tablet-only {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  @include for-desktop-up {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  @include for-large-screen {
+    margin: 0.75rem 0;
+  }
+
+  @include for-extra-large-screen {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+.galleryImg {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0.25rem;
+  transition: 200ms ease-in-out;
+
+  @include hoverable {
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.loader {
+  @include screen(height);
+  width: 100vw;
+}

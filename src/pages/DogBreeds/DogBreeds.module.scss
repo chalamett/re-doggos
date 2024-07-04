@@ -1,0 +1,107 @@
+// Підключення основного файлу стилів з директорії assets
+@use "assets/styles/_main.scss" as *;
+
+// Стилізація елемента, що відображає список порід собак
+.dogBreeds {
+  // Максимальна ширина на всю ширину вікна
+  max-width: 100vw;
+  // Використання міксину для встановлення мінімальної висоти екрану
+  @include screen(min-height);
+  // Фоновий колір, що визначений у змінній
+  background-color: var(--bg-page);
+  // Шрифт, що використовується у елементі
+  font-family: $open-sans;
+  // Курсор за замовчуванням
+  cursor: default;
+}
+
+// Стилізація контейнера для контенту
+.contentWrapper {
+  // Використання flexbox для вирівнювання контенту
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  align-items: flex-start;
+  padding: 2rem 1.5rem 0;
+
+  // Медіа-запит для великих екранів, що збільшує відступи
+  @include for-large-screen {
+    padding: 2.5rem 3rem 0;
+  }
+
+  // Стилізація іконки меню (bars)
+  .bars {
+    margin: 1rem 0 0 2rem;
+    font-size: 2em;
+    color: var(--dog-breeds-bars);
+    cursor: pointer;
+    transition: 200ms ease-in-out;
+
+    // Відображення іконки лише на великих екранах
+    @include lg-block;
+
+    // Зміна кольору при наведенні
+    &:hover {
+      color: var(--dog-breeds-bars-hovered);
+    }
+  }
+}
+
+// Стилізація основного контенту
+.content {
+  // Використання flexbox для вирівнювання та обтікання контенту
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 100%;
+  height: 100%;
+
+  // Медіа-запит для великих екранів, що збільшує відступи та проміжки
+  @include for-desktop-up {
+    padding: 2rem;
+  }
+
+  @include for-large-screen {
+    gap: 2.5rem;
+    padding: 2rem 8rem;
+  }
+
+  @include for-extra-large-screen {
+    gap: 4rem;
+    padding: 3rem 8rem;
+  }
+}
+
+// Стилізація кнопки для фільтрації порід
+.filterBreeds {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 2.5rem;
+  width: 100%;
+  height: 2rem;
+  border-radius: 0.5rem;
+  background-color: var(--dog-breeds-filters);
+  color: var(--primary-dark);
+  font-family: $roboto;
+  font-weight: 700;
+
+  // Приховування кнопки на великих екранах
+  @include lg-hidden;
+  @include text-lg;
+
+  // Медіа-запит для планшетів, що збільшує висоту та розмір тексту кнопки
+  @include for-tablet-only {
+    height: 2.5rem;
+    @include text-xl;
+  }
+
+  // Стилізація іконки в кнопці фільтрації
+  svg {
+    margin-right: 0.5rem;
+
+    // Приховування іконки на великих екранах
+    @include lg-hidden;
+  }
+}

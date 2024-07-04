@@ -1,0 +1,111 @@
+// Імпортуємо головні стилі з основного файлу
+@use "assets/styles/_main.scss" as *;
+
+// Стилі для сторінки помилки
+.errorPage {
+  position: fixed; // Фіксоване позиціонування для постійного відображення на екрані
+  display: flex; // Використання flexbox для центрування елементів
+  flex-direction: column; // Вертикальне розташування елементів
+  justify-content: center; // Центрування елементів по вертикалі
+  align-items: center; // Центрування елементів по горизонталі
+  flex-wrap: wrap; // Дозволяє переносити елементи на новий рядок при необхідності
+  gap: 1.75rem; // Відстань між елементами
+  padding: 0 2rem; // Внутрішні відступи з боків
+  width: 100vw; // Ширина сторінки на весь екран
+  font-family: $open-sans; // Встановлення шрифту
+
+  background-color: var(--bg-page); // Фон сторінки
+  color: var(--dog-breeds-bars); // Колір тексту
+
+  // Включаємо загальні стилі для висоти екрану та розмірів тексту
+  @include screen(height);
+  @include text-2xl;
+
+  // Медіа-запит для планшетів
+  @include for-tablet-only {
+    @include text-3xl;
+  }
+
+  // Медіа-запит для настільних комп'ютерів
+  @include for-desktop-up {
+    @include text-2xl;
+  }
+
+  // Медіа-запит для дуже великих екранів
+  @include for-extra-large-screen {
+    gap: 2.5rem; // Збільшення відстані між елементами
+    @include text-4xl;
+  }
+}
+
+// Стилі для заголовка сторінки помилки
+.title {
+  text-align: center; // Центрування тексту
+  font-weight: 700; // Жирний шрифт
+
+  @include text-6xl; // Розмір тексту
+
+  // Медіа-запит для настільних комп'ютерів
+  @include for-desktop-up {
+    @include text-7xl;
+  }
+
+  // Медіа-запит для дуже великих екранів
+  @include for-extra-large-screen {
+    @include text-8xl;
+  }
+}
+
+// Стилі для повідомлення про помилку
+.message {
+  margin: 1rem 0; // Відступи зверху та знизу
+  width: 75%; // Ширина 75%
+  text-align: center; // Центрування тексту
+
+  @include text-4xl; // Розмір тексту
+
+  // Медіа-запит для планшетів
+  @include for-tablet-only {
+    margin: 2rem 0; // Збільшені відступи
+    width: 66.66%; // Ширина 66.66%
+  }
+
+  // Медіа-запит для настільних комп'ютерів
+  @include for-desktop-up {
+    @include text-5xl;
+  }
+
+  // Медіа-запит для дуже великих екранів
+  @include for-extra-large-screen {
+    @include text-6xl;
+  }
+}
+
+// Стилі для кнопки
+.btn {
+  padding: 0.375rem 0.75rem; // Внутрішні відступи
+  color: $white; // Колір тексту білий
+  text-transform: lowercase; // Малі літери
+  background-color: var(--dog-breeds-bars-hovered); // Фон кнопки
+  border-radius: 0.375rem; // Закруглені кути
+  cursor: pointer; // Зміна курсора на вказівник
+
+  // Стилі для стану при наведенні
+  @include hoverable {
+    &:hover {
+      background-color: var(--dog-breeds-bars); // Зміна фону при наведенні
+      transform: scale(1.05); // Збільшення кнопки при наведенні
+      transition: 150ms ease-in-out; // Плавний перехід
+    }
+  }
+
+  // Медіа-запит для настільних комп'ютерів
+  @include for-desktop-up {
+    padding: 0.5rem 0.75rem; // Збільшені внутрішні відступи
+  }
+
+  // Медіа-запит для дуже великих екранів
+  @include for-extra-large-screen {
+    padding: 0.5rem 1rem; // Ще більші внутрішні відступи
+  }
+}

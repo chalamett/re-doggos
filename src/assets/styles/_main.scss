@@ -1,0 +1,367 @@
+// Імпортуємо шрифти з Google Fonts
+@import url("https://fonts.googleapis.com/css2?family=Graduate&family=Open+Sans:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Caveat&family=IBM+Plex+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+// Міксин для стилів, що застосовуються тільки на планшетах
+@mixin for-tablet-only {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+// Міксин для стилів, що застосовуються на десктопах і вище
+@mixin for-desktop-up {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+// Міксин для стилів, що застосовуються на великих екранах
+@mixin for-large-screen {
+  @media (min-width: 1280px) {
+    @content;
+  }
+}
+
+// Міксин для стилів, що застосовуються на дуже великих екранах
+@mixin for-extra-large-screen {
+  @media (min-width: 1536px) {
+    @content;
+  }
+}
+
+// Міксин для стилів, що застосовуються при наявності підтримки hover
+@mixin hoverable {
+  @media (hover: hover) {
+    @content;
+  }
+}
+
+// Визначення змінних для шрифтів
+$caveat: "Caveat", cursive;
+$open-sans: "Open Sans", sans-serif;
+$graduate: "Graduate", cursive;
+$ibm: "IBM Plex Mono", monospace;
+$roboto: "Roboto", sans-serif;
+
+// Визначення кольорових змінних
+$black: #1a1a1a;
+$black-hovered: hsl(0, 0%, 95%);
+$white: #f8f8f8;
+$white-hovered: hsl(0, 0%, 15%);
+$light-green: #a7bc5b;
+$dark-green: #8da242;
+$dirty-green: #6f7757;
+$dark-dirty-green: #5a6147;
+$light-navy: #28559a;
+$dark-navy: #0f2557;
+$dirty-navy: #18233a;
+$checkbox-green: #8fd14f;
+$concrete-gray: #d2d1d3;
+$dimmed-black: #0d1117;
+$dimmed-gray: #191c22;
+$greenish-yellow: #dcdfd4;
+$greenish-navy: #9c9fa8;
+$greenish-white: #f2f0f0;
+$reset-yellow: #c0c2bb;
+$reset-yellow-hovered: #cfd0c8;
+$reset-gray: #878997;
+$reset-gray-hovered: #707183;
+$tooltip-btn-green: #eaede2;
+$tooltip-btn-blue: #c0c5d2;
+$tooltip-txt-green: #f3f6ec;
+$tooltip-txt-blue: #cacfdc;
+$searchbar-bg: #8da2428b;
+$searchbar-bg-dark: #f8f8f84d;
+$searchbar-bg-lg: #6b7937;
+$searchbar-bg-lg-dark: #5c5f63;
+$search-result: #d2dab5;
+$search-result-dark: #cfd5d6;
+$mode-toggler-bg: #e4e9d1cc;
+$moon: #f1c40f;
+$sun: #f39c12;
+$dimmed-green: #eaefd2;
+$dimmed-blue: #d4d8c7;
+$about-txt-hovered: #1a1a1acc;
+$about-txt-hovered-dark: #f8f8f8cc;
+$sub-desc-dark: #536375;
+$desc-bg: #1a1a1a0d;
+$desc-bg-dark: #f8f8f81a;
+$name-shadow: #8da2424c;
+$name-shadow-dark: #0311174c;
+$anchor: #4b5563;
+$anchor-dark: #9ca3af;
+$zero-matches-btn-dark: #386ab4;
+$zero-matches-btn-hovered: #3b402e;
+$scroll-to-top-hovered: #81933e;
+$home-main-text: #171b0a80;
+$home-main-text-dark: #0a0c1b80;
+$github-btn: lighten($light-navy, 20%);
+
+// Стиль для тіла документа
+body {
+  margin: 0;
+}
+
+// Стиль для посилань
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+// Загальні стилі для кнопок і полів вводу
+button,
+input {
+  padding: 0;
+  margin: 0;
+  color: inherit;
+  background-color: inherit;
+  border: inherit;
+  font: inherit;
+  line-height: inherit;
+}
+
+// Стиль для списків
+ul,
+li {
+  margin: 0;
+  list-style-type: inherit;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+}
+
+// Стиль для зображень
+img {
+  max-width: 100%;
+}
+
+// Стиль для кореневого елемента
+div[id="root"] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+// Загальний стиль для всіх елементів, псевдоелементів ::before і ::after
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+// Визначення CSS змінних для теми
+html {
+  --black: #{$black};
+  --black-hovered: #{$black-hovered};
+  --white: #{$white};
+  --white-hovered: #{$white-hovered};
+  --primary-light: #{$light-green};
+  --primary-dark: #{$dark-green};
+  --primary-dirty: #{$dirty-green};
+  --primary-dark-dirty: #{$dark-dirty-green};
+  --bg-dimmed: #{$white};
+  --filters-bg: #{$greenish-yellow};
+  --reset-btn: #{$reset-yellow};
+  --reset-btn-hovered: #{$reset-yellow-hovered};
+  --tooltip-btn: #{$tooltip-btn-green};
+  --tooltip-txt: #{$tooltip-txt-green};
+  --menu-bg: #{$greenish-yellow};
+  --search-bar-bg: #{$searchbar-bg};
+  --search-bar-bg-lg: #{$searchbar-bg-lg};
+  --search-result: #{$search-result};
+  --ball: #{$dimmed-green};
+  --header-bg: #{$dark-green};
+  --language: #{$white};
+  --bg-page: #{$greenish-white};
+  --about-txt-hovered: #{$about-txt-hovered};
+  --dog-breeds-bars: #{$dirty-green};
+  --dog-breeds-bars-hovered: #{$dark-dirty-green};
+  --dog-breeds-filters: #{$white};
+  --sub-desc: #{$dirty-green};
+  --desc-bg: #{$desc-bg};
+  --dog-page-name: #{$light-green};
+  --name-shadow: #{$name-shadow};
+  --anchor: #{$anchor};
+  --browse-btn: #{$dark-green};
+  --zero-matches-btn: #{$dark-dirty-green};
+  --zero-matches-btn-hovered: #{$zero-matches-btn-hovered};
+  --scroll-to-top-hovered: #{$scroll-to-top-hovered};
+  --logo-hovered: #{$black};
+  --home-main-text: #{$home-main-text};
+  --github-btn: #{lighten($light-green, 15%)};
+}
+
+// Визначення CSS змінних для темної теми
+[data-theme="dark"] {
+  --black: #{$white};
+  --black-hovered: #{$white-hovered};
+  --white: #{$black};
+  --white-hovered: #{$black-hovered};
+  --primary-light: #{$dark-navy};
+  --primary-dark: #{$light-navy};
+  --primary-dirty: #{$dirty-navy};
+  --primary-dark-dirty: #{$light-navy};
+  --bg-dimmed: #{$dimmed-black};
+  --filters-bg: #{$greenish-navy};
+  --reset-btn: #{$reset-gray};
+  --reset-btn-hovered: #{$reset-gray-hovered};
+  --tooltip-btn: #{$tooltip-btn-blue};
+  --tooltip-txt: #{$tooltip-txt-green};
+  --menu-bg: #{$black};
+  --search-bar-bg: #{$searchbar-bg-dark};
+  --search-bar-bg-lg: #{$searchbar-bg-lg-dark};
+  --search-result: #{$search-result-dark};
+  --ball: #{$dimmed-blue};
+  --header-bg: #{$dimmed-gray};
+  --language: #{$light-navy};
+  --bg-page: #{$dimmed-black};
+  --about-txt-hovered: #{$about-txt-hovered-dark};
+  --dog-breeds-bars: #{$light-navy};
+  --dog-breeds-bars-hovered: #{$dark-navy};
+  --dog-breeds-filters: #{$dimmed-gray};
+  --sub-desc: #{$sub-desc-dark};
+  --desc-bg: #{$desc-bg-dark};
+  --dog-page-name: #{$light-navy};
+  --name-shadow: #{$name-shadow-dark};
+  --anchor: #{$anchor-dark};
+  --browse-btn: #{$black};
+  --zero-matches-btn: #{$zero-matches-btn-dark};
+  --zero-matches-btn-hovered: #{$dark-navy};
+  --scroll-to-top-hovered: #{$dark-navy};
+  --logo-hovered: #{$light-navy};
+  --home-main-text: #{$home-main-text-dark};
+  --github-btn: #{$about-txt-hovered-dark};
+}
+
+// Міксини для різних розмірів тексту
+@mixin text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+@mixin text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+@mixin text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+@mixin text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+@mixin text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+@mixin text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+@mixin text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+@mixin text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+@mixin text-6xl {
+  font-size: 3.75rem;
+  line-height: 1;
+}
+
+@mixin text-7xl {
+  font-size: 4.5rem;
+  line-height: 1;
+}
+
+@mixin text-8xl {
+  font-size: 6rem;
+  line-height: 1;
+}
+
+// Кадрова анімація для елемента, що з'являється справа
+@keyframes swipe {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+// Міксин для анімації swipe
+@mixin swipe {
+  animation: swipe 300ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+// Міксин для переміщення елемента вліво
+@mixin right {
+  transform: translateX(-100%);
+  transition: transform 300ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+// Міксин для відображення елемента на великих екранах
+@mixin lg-block {
+  display: none;
+
+  @include for-desktop-up {
+    display: block;
+  }
+}
+
+// Міксин для приховання елемента на великих екранах
+@mixin lg-hidden {
+  @include for-desktop-up {
+    display: none;
+  }
+}
+
+// Міксин для анімації переходу кольору посилання
+@mixin about-links-transition {
+  cursor: pointer;
+
+  &:hover {
+    color: var(--about-txt-hovered);
+    transition: 200ms ease-in-out;
+  }
+}
+
+// Міксин для визначення висоти екрану
+@mixin screen($property) {
+  #{$property}: calc(100vh - 2.5rem);
+
+  @include for-desktop-up {
+    #{$property}: calc(100vh - 3rem);
+  }
+
+  @include for-extra-large-screen() {
+    #{$property}: calc(100vh - 3.5rem);
+  }
+}
+
+// Міксин для встановлення верхнього відступу
+@mixin top-0 {
+  top: 2.5rem;
+
+  @include for-desktop-up {
+    top: 3rem;
+  }
+
+  @include for-extra-large-screen() {
+    top: 3.5rem;
+  }
+}
